@@ -11,7 +11,7 @@
 std::vector<uint8_t> lvt::encodeLength(const std::vector<uint8_t> &value) {
     assert(!value.empty());
     if (value.size() == 1 && value[0] <= maxShort) {
-        return std::vector<uint8_t>(1, static_cast<uint8_t>(value.size()));
+        return std::vector<uint8_t>(1, static_cast<uint8_t>(value[0]));
     }
     assert(value.size() < 127);
     std::vector<uint8_t> encoded(value.size() + 1);
@@ -25,7 +25,7 @@ std::vector<uint8_t> lvt::decodeLength(const std::vector<uint8_t> &value) {
 }
 
 std::vector<uint8_t> lvt::decodeLength(const uint8_t* value) {
-    bool isShortForm = value[0] >> 7;
+    bool isShortForm = !(value[0] >> 7);
     if (isShortForm) {
         return std::vector<uint8_t>(1, value[0] & 0x7F);
     }
