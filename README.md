@@ -2,9 +2,8 @@
 
 ## Encoding example
 
->./LVT e 84499602D2
-
->04499602D2
+>./LVT e 1234567890
+>84499602D2
 
 ## Decoding example
 >./LVT d 05024CB016EA
