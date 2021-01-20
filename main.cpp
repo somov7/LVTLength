@@ -12,10 +12,6 @@ int main(int argc, char *argv[]) {
     assert(argv[1][0] == 'e' || argv[1][0] == 'd');
     if(argv[1][0] == 'e') {
         std::vector<uint8_t> converted = base256::convert10to256(std::string(argv[2]));
-        for(auto digit: converted) {
-            std::cout << HEX(digit);
-        }
-        std::cout << std::endl;
         std::vector<uint8_t> encoded = lvt::encodeLength(converted);
         for(auto digit: encoded) {
             std::cout << HEX(digit);
