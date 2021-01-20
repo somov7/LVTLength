@@ -15,7 +15,7 @@ std::vector<uint8_t> lvt::encodeLength(const std::vector<uint8_t> &value) {
     }
     assert(value.size() < 127);
     std::vector<uint8_t> encoded(value.size() + 1);
-    encoded[0] = (1 << 8) | value.size();
+    encoded[0] = (1 << 7) | value.size();
     std::copy(value.begin(), value.end(), encoded.begin() + 1);
     return encoded;
 }
