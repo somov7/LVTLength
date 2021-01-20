@@ -2,7 +2,7 @@
 
 ## Encoding example
 
->./LVT e 1234567890
+>./LVT e 84499602D2
 
 >04499602D2
 
