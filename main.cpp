@@ -16,6 +16,7 @@ int main(int argc, char *argv[]) {
         for(auto digit: encoded) {
             std::cout << HEX(digit);
         }
+        std::cout << std::endl;
     }
     else {
         std::vector<uint8_t> converted = base256::convert16to256(std::string(argv[2]));
