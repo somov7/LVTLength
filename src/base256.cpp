@@ -22,7 +22,9 @@ uint8_t charToHex(char c) {
 
 std::vector<uint8_t> base256::convert10to256(std::string number) {
     std::vector<uint8_t> digits;
-    assert(std::all_of(number.begin(), number.end(), ::isdigit));
+    if(!std::all_of(number.begin(), number.end(), ::isdigit)) {
+        throw std::invalid_argument("Provided string is not a valid base-10 number");
+    }
     while (!number.empty()) {
         std::string newNumber;
         uint32_t remainder = 0;
@@ -48,6 +50,9 @@ std::vector<uint8_t> base256::convert10to256(std::string number) {
 
 std::vector<uint8_t> base256::convert16to256(std::string number) {
     std::vector<uint8_t> digits;
+    if(!std::all_of(number.begin(), number.end(), ::isxdigit)) {
+        throw std::invalid_argument("Provided string is not a valid base-16 number");
+    }
     if(number.length() & 1) {
         digits.push_back(charToHex(number[0]));
     }
